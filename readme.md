@@ -11,6 +11,8 @@ Es sollen jeden Tag folgenden Daten gespeichert werden:
 - Besonderes Event (y/n, zBsp. Geburtstag, Weihnachten, Feier mit Freunden, ...)
   <br>
   Die dadurch gewonnen Daten können über eine eigene Anwendung ausgelesen und dargestellt werden.
+  <br>
+  Es sollen mehrere Benutzer gespeichert werden können.
 
 
 ## Lösungsvorschläge
