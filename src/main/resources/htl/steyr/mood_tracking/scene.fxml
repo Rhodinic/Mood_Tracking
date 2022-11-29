@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.mood_tracking.Controller">
+   <children>
+      <Label layoutX="15.0" layoutY="32.0" text="Stimmung" />
+      <Label layoutX="15.0" layoutY="64.0" text="Schule oder Arbeit" />
+      <Slider fx:id="moodSlider" layoutX="88.0" layoutY="34.0" />
+      <TextField fx:id="moodField" layoutX="235.0" layoutY="28.0" onAction="#moodFieldConfirmed" prefHeight="14.0" prefWidth="35.0" />
+      <CheckBox fx:id="schoolCheckBox" layoutX="126.0" layoutY="64.0" mnemonicParsing="false" onAction="#schoolCheckBoxClicked" />
+      <Group fx:id="schoolExhaustionGroup" layoutX="20.0" layoutY="110.0" visible="false">
+         <children>
+            <Slider fx:id="exhaustionSlider" layoutX="135.0" layoutY="-9.0" prefHeight="14.0" prefWidth="150.0" />
+            <Label layoutX="-5.0" layoutY="-9.0" text="Anstrengung in Schule" />
+            <TextField fx:id="exhaustionField" layoutX="299.0" layoutY="-14.0" onAction="#exhaustionFieldConfirmed" prefHeight="14.0" prefWidth="35.0" />
+         </children>
+      </Group>
+      <Group fx:id="secondHalfGroup" layoutX="61.0" layoutY="196.0">
+         <children>
+            <Label layoutX="-44.0" layoutY="-96.0" text="Menge an sozialer Interaktion" />
+            <Label layoutX="-44.0" layoutY="-64.0" text="Besonderes Event" />
+            <Slider fx:id="socialSlider" layoutX="129.0" layoutY="-96.0" />
+            <TextField fx:id="socialField" layoutX="285.0" layoutY="-101.0" onAction="#socialFieldConfirmed" prefHeight="14.0" prefWidth="35.0" />
+            <CheckBox fx:id="specialEventCheckBox" layoutX="60.0" layoutY="-64.0" mnemonicParsing="false" />
+            <Button layoutX="250.0" layoutY="-36.0" mnemonicParsing="false" onAction="#sendButtonClicked" text="Absenden" />
+         </children>
+      </Group>
+   </children>
+</AnchorPane>

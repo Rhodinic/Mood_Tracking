@@ -1,5 +1,6 @@
-package com.example.mood_tracking;
+package htl.steyr.mood_tracking;
 
+import javafx.application.Application;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -7,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MoodTrackingApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MoodTrackingApplication.class, args);
+        Application.launch(JavaFxApplication.class, args);
     }
 
 }

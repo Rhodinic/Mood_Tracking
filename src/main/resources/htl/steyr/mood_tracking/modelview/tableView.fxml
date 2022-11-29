@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="575.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.mood_tracking.modelview.TableViewController">
+   <children>
+      <DatePicker fx:id="fromDatePicker" layoutX="602.0" layoutY="27.0" onAction="#updateShownData" promptText="Von-Datum" />
+      <DatePicker fx:id="toDatePicker" layoutX="602.0" layoutY="58.0" onAction="#updateShownData" promptText="Bis-Datum" />
+      <TableView fx:id="dataTableView" layoutX="24.0" layoutY="21.0" prefHeight="530.0" prefWidth="558.0">
+        <columns>
+          <TableColumn fx:id="dateColumn" prefWidth="69.0" text="Datum" />
+            <TableColumn fx:id="moodColumn" prefWidth="74.0" text="Stimmung" />
+          <TableColumn fx:id="socialColumn" prefWidth="125.0" text="Soziale Interaktion" />
+            <TableColumn fx:id="exhaustionColumn" prefWidth="102.0" text="Anstrengung" />
+            <TableColumn fx:id="humidityColumn" prefWidth="85.0" text="Feuchtigkeit" />
+            <TableColumn fx:id="temperatureColumn" prefWidth="102.0" text="Temperatur" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

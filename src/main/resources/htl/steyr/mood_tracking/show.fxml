@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.mood_tracking.ShowController">
+    <children>
+      <Group fx:id="loginGroup" layoutX="233.0" layoutY="228.0" AnchorPane.bottomAnchor="240.0" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="312.0" AnchorPane.topAnchor="241.0">
+         <children>
+            <Button layoutX="186.0" layoutY="106.0" mnemonicParsing="false" onAction="#loginButtonClicked" text="Einloggen" />
+            <TextField fx:id="usernameTextField" layoutX="79.0" layoutY="13.0" prefHeight="25.0" prefWidth="175.0" promptText="Benutzername" />
+            <Button layoutX="100.0" layoutY="106.0" mnemonicParsing="false" onAction="#registerButtonClicked" text="Registrieren" />
+            <PasswordField fx:id="passwordTextField" layoutX="79.0" layoutY="61.0" prefHeight="25.0" prefWidth="176.0" promptText="Passwort" />
+         </children>
+      </Group>
+      <Group fx:id="mainGroup" visible="false" AnchorPane.bottomAnchor="2401.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+              <MenuBar prefHeight="25.0" prefWidth="800.0">
+                  <menus>
+                      <Menu mnemonicParsing="false" text="Einstellungen">
+                          <items>
+                              <MenuItem mnemonicParsing="false" onAction="#settingsClicked" text="Bearbeiten" />
+                          </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Graphenansicht">
+                          <items>
+                              <MenuItem mnemonicParsing="false" onAction="#graphViewClicked" text="Anzeigen" />
+                          </items>
+                      </Menu>
+                  <Menu mnemonicParsing="false" text="Tabellenansicht">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#tableViewClicked" text="Anzeigen" />
+                     </items>
+                  </Menu>
+                  </menus>
+              </MenuBar>
+              <Pane fx:id="contentPane" layoutY="25.0" prefHeight="575.0" prefWidth="800.0" />
+         </children>
+      </Group>
+    </children>
+</AnchorPane>

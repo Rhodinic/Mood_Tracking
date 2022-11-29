@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="575.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.mood_tracking.modelview.GraphViewController">
+   <children>
+      <LineChart fx:id="lineChart" layoutX="14.0" layoutY="14.0" prefHeight="452.0" prefWidth="566.0" visible="false">
+        <xAxis>
+          <CategoryAxis label="Datum" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <ComboBox fx:id="graphTypeComboBox" layoutX="613.0" layoutY="48.0" onAction="#graphTypeComboBoxClicked" prefHeight="25.0" prefWidth="174.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="48.0" />
+      <DatePicker fx:id="fromDatePicker" layoutX="615.0" layoutY="102.0" onAction="#updateShownData" promptText="Von-Datum" />
+      <DatePicker fx:id="toDatePicker" layoutX="615.0" layoutY="133.0" onAction="#updateShownData" promptText="Bis-Datum" />
+      <BarChart fx:id="barChart" layoutX="14.0" layoutY="14.0" prefHeight="452.0" prefWidth="566.0" visible="false">
+        <xAxis>
+          <CategoryAxis label="Datum" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <CheckBox fx:id="showMoodCheckBox" layoutX="615.0" layoutY="208.0" mnemonicParsing="false" onAction="#updateShownData" text="Stimmung" />
+      <CheckBox fx:id="showSocialCheckBox" layoutX="615.0" layoutY="233.0" mnemonicParsing="false" onAction="#updateShownData" text="Menge an sozialer Interaktion" />
+      <CheckBox fx:id="showExhaustionCheckBox" layoutX="615.0" layoutY="258.0" mnemonicParsing="false" onAction="#updateShownData" text="Schulanstrengung" />
+      <CheckBox fx:id="showHumidityCheckBox" layoutX="615.0" layoutY="287.0" mnemonicParsing="false" onAction="#updateShownData" text="Feuchtigkeit" />
+      <CheckBox fx:id="showTemperatureCheckBox" layoutX="615.0" layoutY="311.0" mnemonicParsing="false" onAction="#updateShownData" text="Temperatur" />
+      <Label layoutX="615.0" layoutY="180.0" text="Anzuzeigende Daten" />
+      <Label layoutX="613.0" layoutY="31.0" text="Graphen-Art" />
+   </children>
+</AnchorPane>
