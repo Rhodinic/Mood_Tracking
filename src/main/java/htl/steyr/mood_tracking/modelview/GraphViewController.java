@@ -62,16 +62,16 @@ public class GraphViewController {
 
     public void graphTypeComboBoxClicked() {
         switch (graphTypeComboBox.getSelectionModel().getSelectedItem()) {
-            case "Linien-Graph" -> {
+            case "Linien-Graph":
                 hideAllGraphs();
                 lineChart.setVisible(true);
                 updateShownData();
-            }
-            case "Balken-Graph" -> {
+                break;
+            case "Balken-Graph":
                 hideAllGraphs();
                 barChart.setVisible(true);
                 updateShownData();
-            }
+                break;
         }
     }
 
