@@ -1,8 +1,7 @@
-package htl.steyr.mood_tracking;
+package htl.steyr.mood_tracking.application;
 
-import htl.steyr.mood_tracking.model.User;
-import htl.steyr.mood_tracking.model.UserRepository;
-import org.apache.commons.codec.digest.DigestUtils;
+import htl.steyr.mood_tracking.application.model.User;
+import htl.steyr.mood_tracking.application.model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

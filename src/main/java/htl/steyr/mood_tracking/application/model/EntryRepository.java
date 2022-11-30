@@ -1,9 +1,8 @@
-package htl.steyr.mood_tracking.model;
+package htl.steyr.mood_tracking.application.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.Temporal;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.TemporalType;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package htl.steyr.mood_tracking.modelview;
+package htl.steyr.mood_tracking.application.modelview;
 
 import org.springframework.stereotype.Component;
 

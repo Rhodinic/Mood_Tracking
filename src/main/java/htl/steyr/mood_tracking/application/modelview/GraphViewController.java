@@ -1,8 +1,8 @@
-package htl.steyr.mood_tracking.modelview;
+package htl.steyr.mood_tracking.application.modelview;
 
-import htl.steyr.mood_tracking.UserHandler;
-import htl.steyr.mood_tracking.model.Entry;
-import htl.steyr.mood_tracking.model.EntryRepository;
+import htl.steyr.mood_tracking.application.UserHandler;
+import htl.steyr.mood_tracking.application.model.Entry;
+import htl.steyr.mood_tracking.application.model.EntryRepository;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;

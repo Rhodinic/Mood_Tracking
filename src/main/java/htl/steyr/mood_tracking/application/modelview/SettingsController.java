@@ -1,7 +1,7 @@
-package htl.steyr.mood_tracking.modelview;
+package htl.steyr.mood_tracking.application.modelview;
 
-import htl.steyr.mood_tracking.UserHandler;
-import htl.steyr.mood_tracking.model.User;
+import htl.steyr.mood_tracking.application.UserHandler;
+import htl.steyr.mood_tracking.application.model.User;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;

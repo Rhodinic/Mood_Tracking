@@ -1,12 +1,12 @@
-package htl.steyr.mood_tracking;
+package htl.steyr.mood_tracking.application;
 
-import htl.steyr.mood_tracking.model.Entry;
-import htl.steyr.mood_tracking.model.EntryRepository;
-import htl.steyr.mood_tracking.model.User;
-import htl.steyr.mood_tracking.model.Weather;
+import htl.steyr.mood_tracking.application.model.EntryRepository;
+import htl.steyr.mood_tracking.application.model.User;
+import htl.steyr.mood_tracking.application.model.Weather;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import htl.steyr.mood_tracking.application.model.Entry;
 
 import java.io.IOException;
 import java.io.InputStream;

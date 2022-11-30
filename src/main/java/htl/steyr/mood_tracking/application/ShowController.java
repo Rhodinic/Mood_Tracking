@@ -1,9 +1,7 @@
-package htl.steyr.mood_tracking;
+package htl.steyr.mood_tracking.application;
 
-import htl.steyr.mood_tracking.model.User;
-import htl.steyr.mood_tracking.model.UserRepository;
-import htl.steyr.mood_tracking.model.Weather;
-import javafx.event.ActionEvent;
+import htl.steyr.mood_tracking.application.model.User;
+import htl.steyr.mood_tracking.application.model.Weather;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.Alert;

@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="575.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.mood_tracking.modelview.SettingsController">
+<AnchorPane prefHeight="575.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.mood_tracking.application.modelview.SettingsController">
    <children>
       <TextField fx:id="locationTextField" layoutX="37.0" layoutY="72.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="72.0" />
       <Label layoutX="37.0" layoutY="46.0" text="Standort" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="46.0" />

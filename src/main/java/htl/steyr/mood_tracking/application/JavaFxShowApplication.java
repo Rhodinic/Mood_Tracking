@@ -1,5 +1,6 @@
-package htl.steyr.mood_tracking;
+package htl.steyr.mood_tracking.application;
 
+import htl.steyr.mood_tracking.MoodTrackingApplication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,8 +9,8 @@ import javafx.stage.Stage;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
-public class JavaFxApplication extends Application {
-    private static final String APPLICATION_TITLE = "Stimmungsabfrage";
+public class JavaFxShowApplication extends Application {
+    private static final String APPLICATION_TITLE = "Stimmungsabfragen Backend";
 
     private static ConfigurableApplicationContext springContext;
     private Parent root;
@@ -27,7 +28,7 @@ public class JavaFxApplication extends Application {
                         sources(MoodTrackingApplication.class).
                         run(args);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("show.fxml"));
 
         /**
          * Set spring as the factory (when controllers were generated).
@@ -41,7 +42,7 @@ public class JavaFxApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle(APPLICATION_TITLE);
-        Scene scene = new Scene(root, 400, 240);
+        Scene scene = new Scene(root, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

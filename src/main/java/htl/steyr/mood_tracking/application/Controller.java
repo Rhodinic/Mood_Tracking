@@ -1,4 +1,4 @@
-package htl.steyr.mood_tracking;
+package htl.steyr.mood_tracking.application;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

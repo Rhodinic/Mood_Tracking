@@ -1,7 +1,8 @@
 package htl.steyr.mood_tracking;
 
+import htl.steyr.mood_tracking.application.JavaFxApplication;
+import htl.steyr.mood_tracking.application.JavaFxShowApplication;
 import javafx.application.Application;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Arrays;
