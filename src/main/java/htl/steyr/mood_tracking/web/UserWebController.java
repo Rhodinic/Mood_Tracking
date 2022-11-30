@@ -71,6 +71,9 @@ public class UserWebController {
 
         if(user != null){
             if(entryWriter.getWeather(location) != null){
+                user.setLocation(location);
+                userRepository.save(user);
+
                 return ResponseEntity.status(HttpStatus.OK).body("Location changed successfully.");
             }else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Location was not found.");
