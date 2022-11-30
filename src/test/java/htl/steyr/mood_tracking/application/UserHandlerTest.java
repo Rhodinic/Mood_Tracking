@@ -24,9 +24,6 @@ class UserHandlerTest {
     @Order(1)
     @Test
     void save() {
-        /**
-         * Hoffentlich kein Problem mit Appdata?
-         */
         Assertions.assertDoesNotThrow(() -> {
             User u = new User();
 

@@ -1,5 +1,6 @@
 package htl.steyr.mood_tracking.application.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -32,10 +33,12 @@ public class Entry {
     @Column(nullable=false)
     private boolean specialEvent;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "weather", referencedColumnName = "id", nullable = false)
     private Weather weather;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="user", nullable=false)
     private User user;

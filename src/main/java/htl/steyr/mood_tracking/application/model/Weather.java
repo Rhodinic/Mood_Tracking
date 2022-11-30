@@ -1,5 +1,7 @@
 package htl.steyr.mood_tracking.application.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +20,7 @@ public class Weather {
     @Column(nullable=false)
     private String description;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "weather")
     private Entry entry;
 

@@ -12,6 +12,8 @@ import java.util.Optional;
 public interface EntryRepository extends JpaRepository<Entry, Long> {
     Optional<Entry> findByDateAndUser(@Temporal(TemporalType.DATE) Date date, User user);
 
+    List<Entry> findByUser(User user);
+
     @Query("SELECT e FROM Entry e " +
            "WHERE e.date >= :startDate AND e.date <= :endDate " +
            "AND e.user = :user")

@@ -14,6 +14,10 @@ import java.util.Optional;
 @Component
 public class UserHandler {
 
+    /**
+     * Umstellung auf JSON Web-Token
+     */
+
     @Autowired
     UserRepository userRepository;
 
@@ -37,7 +41,13 @@ public class UserHandler {
         try {
             String[] fileContent = Files.readString(Paths.get(System.getenv("APPDATA") + "\\.moodTracking\\user.csv")).split(";");
 
-            result = userRepository.findByUsernameAndPassword(fileContent[0], fileContent[1]).get();
+            Optional<User> potUser = userRepository.findByUsernameAndPassword(fileContent[0], fileContent[1]);
+
+            if(potUser.isPresent()){
+                result = potUser.get();
+            }else{
+                return null;
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
