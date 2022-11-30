@@ -2,6 +2,7 @@ package htl.steyr.mood_tracking.web;
 
 import htl.steyr.mood_tracking.MoodTrackingApplication;
 import htl.steyr.mood_tracking.application.UserHandler;
+import htl.steyr.mood_tracking.application.model.User;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +16,9 @@ class UserWebControllerTest {
 
     @Autowired
     private UserWebController userWebController;
+
+    @Autowired
+    private UserHandler userHandler;
 
     @Order(1)
     @Test
@@ -36,12 +40,8 @@ class UserWebControllerTest {
     @Test
     void changeLocation() {
         Assertions.assertDoesNotThrow(() -> {
-            /*
-            userWebController.changeLocation("Linz");
-            Assertions.assertEquals("Linz", userHandler.getUser().getLocation());
-             */
-
             Assertions.assertEquals("Location changed successfully.", userWebController.changeLocation("Linz").getBody());
+            Assertions.assertEquals("Linz", userHandler.getUser().getLocation());
         });
     }
 
