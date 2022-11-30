@@ -24,7 +24,7 @@ public class JavaFxShowApplication extends Application {
          */
         springContext =
                 new SpringApplicationBuilder().
-                        sources(MoodTrackingShowApplication.class).
+                        sources(MoodTrackingApplication.class).
                         run(args);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("show.fxml"));
