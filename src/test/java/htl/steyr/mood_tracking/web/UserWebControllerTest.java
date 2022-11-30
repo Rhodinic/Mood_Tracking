@@ -49,7 +49,7 @@ class UserWebControllerTest {
     @Test
     void showTakenNames() {
         Assertions.assertDoesNotThrow(() -> {
-            assertTrue(userWebController.showTakenNames().getBody().contains("tests"));
+            assertTrue(userWebController.showTakenNames().getBody().contains("userTests"));
         });
     }
 }
