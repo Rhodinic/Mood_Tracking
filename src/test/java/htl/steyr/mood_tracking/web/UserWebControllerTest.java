@@ -2,6 +2,7 @@ package htl.steyr.mood_tracking.web;
 
 import htl.steyr.mood_tracking.MoodTrackingApplication;
 import htl.steyr.mood_tracking.application.UserHandler;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +26,7 @@ class UserWebControllerTest {
         Assertions.assertDoesNotThrow(() -> {
             Assertions.assertEquals("Successfully registered!", userWebController.register("userTests", "test", "Steyr").getBody());
             Assertions.assertEquals("userTests", userHandler.getUser().getUsername());
-            Assertions.assertEquals("test", userHandler.getUser().getPassword());
+            Assertions.assertEquals(DigestUtils.md5Hex("test").toUpperCase(), userHandler.getUser().getPassword());
             Assertions.assertEquals("Steyr", userHandler.getUser().getLocation());
         });
     }
@@ -36,7 +37,7 @@ class UserWebControllerTest {
         Assertions.assertDoesNotThrow(() -> {
             Assertions.assertEquals("Login successful.", userWebController.login("userTests", "test").getBody());
             Assertions.assertEquals("userTests", userHandler.getUser().getUsername());
-            Assertions.assertEquals("test", userHandler.getUser().getPassword());
+            Assertions.assertEquals(DigestUtils.md5Hex("test").toUpperCase(), userHandler.getUser().getPassword());
             Assertions.assertEquals("Steyr", userHandler.getUser().getLocation());
         });
     }
