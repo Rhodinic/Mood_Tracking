@@ -1,14 +1,12 @@
 package htl.steyr.mood_tracking.web;
 
 import htl.steyr.mood_tracking.MoodTrackingApplication;
-import htl.steyr.mood_tracking.application.UserHandler;
 import htl.steyr.mood_tracking.application.model.Entry;
-import htl.steyr.mood_tracking.application.model.EntryRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @SpringBootTest(classes = {MoodTrackingApplication.class})
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
