@@ -1,6 +1,6 @@
-package htl.steyr.mood_tracking.application.modelview;
+package htl.steyr.mood_tracking.application.views;
 
-import htl.steyr.mood_tracking.application.UserHandler;
+import htl.steyr.mood_tracking.handlers.UserHandler;
 import htl.steyr.mood_tracking.application.model.Entry;
 import htl.steyr.mood_tracking.application.model.EntryRepository;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -37,7 +37,6 @@ public class TableViewController {
     @Autowired
     UserHandler userHandler;
 
-
     public void initialize(){
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         moodColumn.setCellValueFactory(new PropertyValueFactory<>("mood"));
@@ -50,7 +49,7 @@ public class TableViewController {
     }
 
     public void updateShownData() {
-        /**
+        /*
          * When no Date is selected select everything
          */
         Date fromDate = new GregorianCalendar(1970, Calendar.JANUARY, 1).getTime();
@@ -64,6 +63,9 @@ public class TableViewController {
             toDate = Date.from(Instant.from(toDatePicker.getValue().atStartOfDay(ZoneId.systemDefault())));
         }
 
+        /*
+         * Add all entries in the date range to the table
+         */
         dataTableView.getItems().clear();
         dataTableView.getItems().addAll(entryRepository.findAllBetweenDates(userHandler.getUser(), fromDate, toDate));
     }

@@ -1,7 +1,8 @@
 package htl.steyr.mood_tracking.application;
 
+import htl.steyr.mood_tracking.handlers.EntryWriter;
+import htl.steyr.mood_tracking.handlers.UserHandler;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
@@ -34,7 +35,7 @@ public class Controller {
         socialSlider.valueProperty().addListener((observable, oldValue, newValue) -> socialField.setText(String.valueOf(newValue.intValue())));
     }
 
-    public void schoolCheckBoxClicked(ActionEvent actionEvent) {
+    public void schoolCheckBoxClicked() {
         if(schoolCheckBox.isSelected()){
             schoolExhaustionGroup.setVisible(true);
             secondHalfGroup.setLayoutY(secondHalfGroup.getLayoutY() + 40);
@@ -44,25 +45,26 @@ public class Controller {
         }
     }
 
-    public void moodFieldConfirmed(ActionEvent actionEvent) {
+    public void moodFieldConfirmed() {
         moodSlider.setValue(Double.parseDouble(moodField.getText()));
     }
 
-    public void exhaustionFieldConfirmed(ActionEvent actionEvent) {
+    public void exhaustionFieldConfirmed() {
         exhaustionSlider.setValue(Double.parseDouble(exhaustionField.getText()));
     }
 
-    public void socialFieldConfirmed(ActionEvent actionEvent) {
+    public void socialFieldConfirmed() {
         socialSlider.setValue(Double.parseDouble(socialField.getText()));
     }
 
-    public void sendButtonClicked(ActionEvent actionEvent) {
+    public void sendButtonClicked() {
         entryWriter.saveEntry((int) moodSlider.getValue(),
-                                            schoolCheckBox.isSelected(),
-                                            (int) exhaustionSlider.getValue(),
-                                            (int) socialSlider.getValue(),
-                                            specialEventCheckBox.isSelected(),
-                                            userHandler.getUser());
+                              schoolCheckBox.isSelected(),
+                              (int) exhaustionSlider.getValue(),
+                              (int) socialSlider.getValue(),
+                              specialEventCheckBox.isSelected(),
+                              userHandler.getUser()
+        );
 
         Platform.exit();
     }

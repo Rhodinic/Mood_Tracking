@@ -1,7 +1,7 @@
 package htl.steyr.mood_tracking.application;
 
 import htl.steyr.mood_tracking.MoodTrackingApplication;
-import htl.steyr.mood_tracking.application.UserHandler;
+import htl.steyr.mood_tracking.handlers.UserHandler;
 import htl.steyr.mood_tracking.application.model.User;
 import htl.steyr.mood_tracking.application.model.UserRepository;
 import org.junit.jupiter.api.*;

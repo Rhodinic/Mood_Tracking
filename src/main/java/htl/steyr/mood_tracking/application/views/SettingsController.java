@@ -1,8 +1,7 @@
-package htl.steyr.mood_tracking.application.modelview;
+package htl.steyr.mood_tracking.application.views;
 
-import htl.steyr.mood_tracking.application.UserHandler;
+import htl.steyr.mood_tracking.handlers.UserHandler;
 import htl.steyr.mood_tracking.application.model.User;
-import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,7 +18,7 @@ public class SettingsController {
         locationTextField.setText(userHandler.getUser().getLocation());
     }
 
-    public void saveButtonClicked(ActionEvent actionEvent) {
+    public void saveButtonClicked() {
         User u = userHandler.getUser();
         u.setLocation(locationTextField.getText());
 

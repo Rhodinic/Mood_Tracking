@@ -1,8 +1,8 @@
 package htl.steyr.mood_tracking.application;
 
 import htl.steyr.mood_tracking.MoodTrackingApplication;
-import htl.steyr.mood_tracking.application.EntryWriter;
-import htl.steyr.mood_tracking.application.UserHandler;
+import htl.steyr.mood_tracking.handlers.EntryWriter;
+import htl.steyr.mood_tracking.handlers.UserHandler;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

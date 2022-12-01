@@ -2,6 +2,8 @@ package htl.steyr.mood_tracking.application;
 
 import htl.steyr.mood_tracking.application.model.User;
 import htl.steyr.mood_tracking.application.model.Weather;
+import htl.steyr.mood_tracking.handlers.EntryWriter;
+import htl.steyr.mood_tracking.handlers.UserHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.Alert;
@@ -32,16 +34,16 @@ public class ShowController {
     EntryWriter entryWriter;
 
     public void initialize() {
-        loadFXML("modelview/start.fxml");
+        loadFXML("start.fxml");
     }
 
     public void loginButtonClicked() {
         Optional<User> response = userHandler.authenticate(usernameTextField.getText(), DigestUtils.md5Hex(passwordTextField.getText()).toUpperCase());
 
+        /*
+         * Check for valid user, if not show Error
+         */
         if (response.isPresent()) {
-            /**
-             * Program will save last logged-in User into AppData Folder.
-             */
             userHandler.save(response.get());
             login();
         } else {
@@ -55,6 +57,9 @@ public class ShowController {
         Weather newWeather = null;
 
         if (!usernameTextField.getText().isEmpty() && !passwordTextField.getText().isEmpty()) {
+            /*
+             * Check if Username is already taken, else show a warning
+             */
             if (userHandler.isUsernameTaken(usernameTextField.getText())) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Benutzername existiert bereits! Bitte wählen Sie einen anderen.", ButtonType.OK);
                 alert.showAndWait();
@@ -66,6 +71,9 @@ public class ShowController {
                 TextInputDialog inputDialog = new TextInputDialog("Steyr");
                 inputDialog.setHeaderText("Geben Sie bitte Ihren Standort ein (zBsp.: Steyr)");
 
+                /*
+                 * Shows the Weather-choosing dialogue until a valid location is chosen
+                 */
                 while (newWeather == null) {
                     inputDialog.showAndWait();
 
@@ -92,21 +100,21 @@ public class ShowController {
     }
 
     public void settingsClicked() {
-        loadFXML("modelview/settings.fxml");
+        loadFXML("settings.fxml");
     }
 
     public void graphViewClicked() {
-        loadFXML("modelview/graphView.fxml");
+        loadFXML("graphView.fxml");
     }
 
     public void tableViewClicked() {
-        loadFXML("modelview/tableView.fxml");
+        loadFXML("tableView.fxml");
     }
 
     private void loadFXML(String file) {
         Pane newLoadedPane = null;
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(file));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("views/" + file));
 
             fxmlLoader.setControllerFactory(JavaFxShowApplication.getSpringContext()::getBean);
             newLoadedPane = fxmlLoader.load();

@@ -1,7 +1,7 @@
 package htl.steyr.mood_tracking.web;
 
 import htl.steyr.mood_tracking.MoodTrackingApplication;
-import htl.steyr.mood_tracking.application.UserHandler;
+import htl.steyr.mood_tracking.handlers.UserHandler;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package htl.steyr.mood_tracking.application.modelview;
+package htl.steyr.mood_tracking.application.views;
 
-import htl.steyr.mood_tracking.application.UserHandler;
+import htl.steyr.mood_tracking.handlers.UserHandler;
 import htl.steyr.mood_tracking.application.model.Entry;
 import htl.steyr.mood_tracking.application.model.EntryRepository;
 import javafx.scene.chart.BarChart;
@@ -42,22 +42,14 @@ public class GraphViewController {
     @Autowired
     UserHandler userHandler;
 
-    List<Entry> currentData;
-
     public void initialize(){
-        /**
-         * Ineitializ GraphType ComboBox with available Graphs
+        /*
+         * Initialize GraphType ComboBox with available Graphs
          */
         graphTypeComboBox.getItems().add("Linien-Graph");
         graphTypeComboBox.getItems().add("Balken-Graph");
 
         updateShownData();
-    }
-
-
-    private void hideAllGraphs(){
-        lineChart.setVisible(false);
-        barChart.setVisible(false);
     }
 
     public void graphTypeComboBoxClicked() {
@@ -75,32 +67,17 @@ public class GraphViewController {
         }
     }
 
-    private void reloadData(){
-        /**
-         * When no Date is selected select everything
-         */
-        Date fromDate = new GregorianCalendar(1970, Calendar.JANUARY, 1).getTime();
-        Date toDate = new GregorianCalendar(3000, Calendar.JANUARY, 1).getTime();
-
-        if(fromDatePicker.getValue() != null){
-             fromDate = Date.from(Instant.from(fromDatePicker.getValue().atStartOfDay(ZoneId.systemDefault())));
-        }
-
-        if(toDatePicker.getValue() != null){
-            toDate = Date.from(Instant.from(toDatePicker.getValue().atStartOfDay(ZoneId.systemDefault())));
-        }
-
-        currentData = entryRepository.findAllBetweenDates(userHandler.getUser(), fromDate, toDate);
-    }
-
     public void updateShownData(){
-        reloadData();
+        List<Entry> currentData = getCurrentData();
 
         lineChart.getData().clear();
         barChart.getData().clear();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 
+        /*
+         * Fill all selected Series' and add to all charts
+         */
         if(showMoodCheckBox.isSelected()){
             XYChart.Series<String, Integer> moodSeries = new XYChart.Series<>();
             moodSeries.setName("Stimmung von 1 - 100");
@@ -109,8 +86,7 @@ public class GraphViewController {
                 moodSeries.getData().add(new XYChart.Data<>(sdf.format(e.getDate()), e.getMood()));
             }
 
-            lineChart.getData().add(moodSeries);
-            barChart.getData().add(moodSeries);
+            addSeriesToAllCharts(moodSeries);
         }
 
         if(showSocialCheckBox.isSelected()){
@@ -121,8 +97,7 @@ public class GraphViewController {
                 socialSeries.getData().add(new XYChart.Data<>(sdf.format(e.getDate()), e.getAmountOfSocialInteraction()));
             }
 
-            lineChart.getData().add(socialSeries);
-            barChart.getData().add(socialSeries);
+            addSeriesToAllCharts(socialSeries);
         }
 
         if(showExhaustionCheckBox.isSelected()){
@@ -133,8 +108,7 @@ public class GraphViewController {
                 exhaustionSeries.getData().add(new XYChart.Data<>(sdf.format(e.getDate()), e.getSchoolIntensity()));
             }
 
-            lineChart.getData().add(exhaustionSeries);
-            barChart.getData().add(exhaustionSeries);
+            addSeriesToAllCharts(exhaustionSeries);
         }
 
         if(showHumidityCheckBox.isSelected()){
@@ -145,8 +119,7 @@ public class GraphViewController {
                 humiditySeries.getData().add(new XYChart.Data<>(sdf.format(e.getDate()), (int) e.getWeather().getHumidity()));
             }
 
-            lineChart.getData().add(humiditySeries);
-            barChart.getData().add(humiditySeries);
+            addSeriesToAllCharts(humiditySeries);
         }
 
         if(showTemperatureCheckBox.isSelected()){
@@ -157,8 +130,35 @@ public class GraphViewController {
                 temperatureSeries.getData().add(new XYChart.Data<>(sdf.format(e.getDate()), (int) e.getWeather().getTemperature()));
             }
 
-            lineChart.getData().add(temperatureSeries);
-            barChart.getData().add(temperatureSeries);
+            addSeriesToAllCharts(temperatureSeries);
         }
+    }
+
+    private List<Entry> getCurrentData(){
+        /*
+         * When no Date is selected select everything
+         */
+        Date fromDate = new GregorianCalendar(1970, Calendar.JANUARY, 1).getTime();
+        Date toDate = new GregorianCalendar(3000, Calendar.JANUARY, 1).getTime();
+
+        if(fromDatePicker.getValue() != null){
+            fromDate = Date.from(Instant.from(fromDatePicker.getValue().atStartOfDay(ZoneId.systemDefault())));
+        }
+
+        if(toDatePicker.getValue() != null){
+            toDate = Date.from(Instant.from(toDatePicker.getValue().atStartOfDay(ZoneId.systemDefault())));
+        }
+
+        return entryRepository.findAllBetweenDates(userHandler.getUser(), fromDate, toDate);
+    }
+
+    private void hideAllGraphs(){
+        lineChart.setVisible(false);
+        barChart.setVisible(false);
+    }
+
+    private void addSeriesToAllCharts(XYChart.Series<String, Integer> series){
+        lineChart.getData().add(series);
+        barChart.getData().add(series);
     }
 }

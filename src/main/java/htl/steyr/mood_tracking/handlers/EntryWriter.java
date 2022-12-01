@@ -1,4 +1,4 @@
-package htl.steyr.mood_tracking.application;
+package htl.steyr.mood_tracking.handlers;
 
 import htl.steyr.mood_tracking.application.model.EntryRepository;
 import htl.steyr.mood_tracking.application.model.User;
@@ -24,11 +24,17 @@ public class EntryWriter {
     @Autowired
     private EntryRepository entryRepository;
 
+    /**
+     * Saves a new entry for today for the given user.
+     * If there is already an entry saved for today overwrites the old one with this new one.
+     * @param mood Mood of the day (1-100)
+     * @param school If there was school today (t/f)
+     * @param exhaustion How exhausting school was (1-100), only required if school is true, default value 0
+     * @param socialAmount Amount of social interaction today (1-100)
+     * @param specialEvent If there was a special event today (t/f), e.g. birthday, Christmas
+     * @param user User to save the entry for
+     */
     public void saveEntry(int mood, boolean school, int exhaustion, int socialAmount, boolean specialEvent, User user){
-        /**
-         * If an entry exists from today overwrite that one,
-         * if not create a new entity for today
-         */
         Optional<Entry> result = entryRepository.findByDateAndUser(new Date(), user);
 
         Entry entry;
@@ -50,6 +56,11 @@ public class EntryWriter {
         entryRepository.save(entry);
     }
 
+    /**
+     * Gets the weather of a given location using Weather-API
+     * @param location Location to get the weather for
+     * @return filled Weather Object, null if location is not found
+     */
     public Weather getWeather(String location) {
         Weather result = new Weather();
 
