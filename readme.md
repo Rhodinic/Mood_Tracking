@@ -1,3 +1,7 @@
+## Vorwort
+
+Dieses Programm wurde im Rahmen eines Schul-Projekts erstellt. Die folgenden Anforderungen wurden als Aufgabenstellung für das Projekt gesehen.
+
 ## Problemstellung
 
 Es soll eine Applikation entwickelt werden, mithilfe welcher jeden Tag die Stimmung des Benutzers verfolgt werden kann.
