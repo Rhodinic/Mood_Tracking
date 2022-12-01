@@ -27,10 +27,10 @@ public class EntryWriter {
     /**
      * Saves a new entry for today for the given user.
      * If there is already an entry saved for today overwrites the old one with this new one.
-     * @param mood Mood of the day (1-100)
+     * @param mood Mood of the day (0-100)
      * @param school If there was school today (t/f)
-     * @param exhaustion How exhausting school was (1-100), only required if school is true, default value 0
-     * @param socialAmount Amount of social interaction today (1-100)
+     * @param exhaustion How exhausting school was (0-100), only required if school is true, default value 0
+     * @param socialAmount Amount of social interaction today (0-100)
      * @param specialEvent If there was a special event today (t/f), e.g. birthday, Christmas
      * @param user User to save the entry for
      */

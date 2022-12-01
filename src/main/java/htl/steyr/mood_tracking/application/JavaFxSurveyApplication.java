@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
-public class JavaFxApplication extends Application {
+public class JavaFxSurveyApplication extends Application {
     private static final String APPLICATION_TITLE = "Stimmungsabfrage";
 
     private static ConfigurableApplicationContext springContext;
@@ -19,7 +19,7 @@ public class JavaFxApplication extends Application {
     public void init() throws Exception {
         String[] args = new String[0];
 
-        /**
+        /*
          * Get an "instance" of the spring framework to enable all spring-specific
          * features (dependency injection, autoloading, java persistance api, ...).
          */
@@ -28,9 +28,9 @@ public class JavaFxApplication extends Application {
                         sources(MoodTrackingApplication.class).
                         run(args);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("survey.fxml"));
 
-        /**
+        /*
          * Set spring as the factory (when controllers were generated).
          * So spring is able to do its magic.
          */

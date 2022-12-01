@@ -33,10 +33,10 @@ public class EntryWebController {
 
     /**
      * Adds or overwrites today Entry depending on if it has already been saved for today
-     * @param mood Mood of the day (1-100)
+     * @param mood Mood of the day (0-100)
      * @param school If there was school today (t/f)
-     * @param exhaustion How exhausting school was (1-100), only required if school is true, default value 0
-     * @param socialAmount Amount of social interaction today (1-100)
+     * @param exhaustion How exhausting school was (0-100), only required if school is true, default value 0
+     * @param socialAmount Amount of social interaction today (0-100)
      * @param specialEvent If there was a special event today (t/f), e.g. birthday, Christmas
      * @return Entry saving success, user not found
      */
@@ -44,15 +44,11 @@ public class EntryWebController {
     public ResponseEntity<String> saveEntry(int mood, boolean school, Optional<Integer> exhaustion, int socialAmount, boolean specialEvent) {
         User user = userHandler.getUser();
 
-        /**
-         * @TODO max & min values
-         */
-
         if(user != null){
             if(school && exhaustion.isPresent()){
-                entryWriter.saveEntry(mood, true, exhaustion.get(), socialAmount, specialEvent, user);
+                entryWriter.saveEntry(setIntoRange(mood), true, setIntoRange(exhaustion.get()), setIntoRange(socialAmount), specialEvent, user);
             }else{
-                entryWriter.saveEntry(mood, false, 0, socialAmount, specialEvent, user);
+                entryWriter.saveEntry(setIntoRange(mood), false, 0, setIntoRange(socialAmount), specialEvent, user);
             }
 
             return ResponseEntity.status(HttpStatus.CREATED).body("Successfully created today's entry.");
@@ -95,6 +91,25 @@ public class EntryWebController {
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    /**
+     * Limits value to the range of 0-100
+     * If the Value is < 0 it becomes 0
+     * If the Value is > 100 it becomes 100
+     * @param value Value to limit
+     * @return limited Value
+     */
+    private int setIntoRange(int value){
+        int result = value;
+
+        if(value < 0){
+            result = 0;
+        }else if(value > 100){
+            result = 100;
+        }
+
+        return result;
     }
 
 

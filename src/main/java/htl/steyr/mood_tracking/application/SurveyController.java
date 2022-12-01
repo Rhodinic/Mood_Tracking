@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Controller {
+public class SurveyController {
     public Slider moodSlider;
     public TextField moodField;
     public CheckBox schoolCheckBox;

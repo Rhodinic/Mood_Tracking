@@ -3,6 +3,7 @@ package htl.steyr.mood_tracking.application.views;
 import htl.steyr.mood_tracking.handlers.UserHandler;
 import htl.steyr.mood_tracking.application.model.Entry;
 import htl.steyr.mood_tracking.application.model.EntryRepository;
+import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
