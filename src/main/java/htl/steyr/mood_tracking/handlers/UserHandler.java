@@ -14,10 +14,6 @@ import java.util.Optional;
 @Component
 public class UserHandler {
 
-    /**
-     * @TODO Umstellung auf JSON Web-Token
-     */
-
     @Autowired
     UserRepository userRepository;
 

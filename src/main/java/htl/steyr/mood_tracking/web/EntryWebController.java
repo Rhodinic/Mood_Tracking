@@ -17,7 +17,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-
 @RestController
 @RequestMapping("/entry")
 public class EntryWebController {
